@@ -13,7 +13,7 @@ const green = text => `\x1b[32m${text}\x1b[0m`;
 let swaggerFile;
 
 const parseOutput = dir => path.resolve(dir);
-const parseList = val => val.split(',').map(item => item.trim());
+const parseList = val => val.split(',').map(item => item.trim()).filter(Boolean);
 
 program
   .version(packageInfo.version)
@@ -24,7 +24,7 @@ program
   .option('-b, --handlebars <helperFilePath>', 'path to external handlebars helpers file (defaults to empty)', parseOutput)
   .option('-o, --output <outputDir>', 'directory where to put the generated files (defaults to current directory)', parseOutput, process.cwd())
   .option('-t, --templates <templateDir>', 'directory where templates are located (defaults to internal nodejs templates)')
-  .option('-e, --exclude <operationIds>', 'comma-separated list of operationIds to exclude from generation', parseList)
+  .option('-e, --exclude <operationIds>', 'comma-separated list of operationIds to exclude (e.g. "-e getPetById, listPrivateUserGroups, userRefreshJwt")', parseList)
   .parse(process.argv);
 
 if (!swaggerFile) {
