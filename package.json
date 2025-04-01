@@ -6,6 +6,9 @@
   "bin": {
     "snc": "./cli.js"
   },
+  "scripts": {
+    "test": "mocha test/**/*.test.js"
+  },
   "bugs": {
     "url": "https://github.com/fmvilas/swagger-node-codegen/issues"
   },
@@ -48,5 +51,8 @@
     "lodash": "^4.17.11",
     "project-name-generator": "^2.1.6",
     "word-wrap": "1.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^11.1.0"
   }
 }

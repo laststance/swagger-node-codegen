@@ -13,6 +13,7 @@ const green = text => `\x1b[32m${text}\x1b[0m`;
 let swaggerFile;
 
 const parseOutput = dir => path.resolve(dir);
+const parseList = val => val.split(',').map(item => item.trim());
 
 program
   .version(packageInfo.version)
@@ -23,6 +24,7 @@ program
   .option('-b, --handlebars <helperFilePath>', 'path to external handlebars helpers file (defaults to empty)', parseOutput)
   .option('-o, --output <outputDir>', 'directory where to put the generated files (defaults to current directory)', parseOutput, process.cwd())
   .option('-t, --templates <templateDir>', 'directory where templates are located (defaults to internal nodejs templates)')
+  .option('-e, --exclude <operationIds>', 'comma-separated list of operationIds to exclude from generation', parseList)
   .parse(process.argv);
 
 if (!swaggerFile) {
@@ -34,7 +36,8 @@ codegen.generate({
   swagger: swaggerFile,
   target_dir: program.output,
   templates: program.templates ? path.resolve(process.cwd(), program.templates) : undefined,
-  handlebars_helper: program.handlebars ? path.resolve(process.cwd(), program.handlebars) : undefined
+  handlebars_helper: program.handlebars ? path.resolve(process.cwd(), program.handlebars) : undefined,
+  excluded_operations: program.exclude || []
 }).then(() => {
   console.log(green('Done! ✨'));
   console.log(yellow('Check out your shiny new API at ') + magenta(program.output) + yellow('.'));

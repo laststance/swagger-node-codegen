@@ -46,6 +46,8 @@ npm install --save swagger-node-codegen
     -V, --version                  output the version number
     -o, --output <outputDir>       directory where to put the generated files (defaults to current directory)
     -t, --templates <templateDir>  directory where templates are located (defaults to internal nodejs templates)
+    -b, --handlebars <helperFile>  path to external handlebars helpers file (defaults to empty)
+    -e, --exclude <operationIds>   comma-separated list of operationIds to exclude from generation
     -h, --help                     output usage information
 ```
 
@@ -59,6 +61,11 @@ snc swagger.yaml
 Specify where to put the generated code:
 ```bash
 snc swagger.yaml -o ./my-api
+```
+
+Exclude specific operations from generation:
+```bash
+snc swagger.yaml -e getPetById,updatePet
 ```
 
 ### As a module in your project
@@ -142,6 +149,7 @@ Generates a code skeleton for an API given an OpenAPI/Swagger file.
 | config.swagger | <code>Object</code> \| <code>String</code> | OpenAPI/Swagger JSON or a string pointing to an OpenAPI/Swagger file. |
 | config.target_dir | <code>String</code> | Path to the directory where the files will be generated. |
 | config.templates| <code>String</code> | Path to the directory where custom templates are (optional). |
+| config.excluded_operations | <code>Array</code> | List of operationIds to exclude from generation (optional). |
 
 
 ## Templates
