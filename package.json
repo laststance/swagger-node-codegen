@@ -1,7 +1,7 @@
 {
-  "name": "swagger-node-codegen",
+  "name": "@laststance/swagger-node-codegen",
   "main": "./lib/codegen.js",
-  "version": "1.6.3",
+  "version": "1.0.0",
   "description": "An OpenAPI 3.x/Swagger 2 code generator for Node.js",
   "bin": {
     "snc": "./cli.js"
@@ -10,14 +10,14 @@
     "test": "mocha test/**/*.test.js"
   },
   "bugs": {
-    "url": "https://github.com/fmvilas/swagger-node-codegen/issues"
+    "url": "https://github.com/laststance/swagger-node-codegen/issues"
   },
   "engines": {
     "node": ">=7.6"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/fmvilas/swagger-node-codegen.git"
+    "url": "git://github.com/laststance/swagger-node-codegen.git"
   },
   "keywords": [
     "swagger",

@@ -1,4 +1,6 @@
-<h1>THIS PACKAGE IS NOT MAINTAINED ANYMORE. IF YOU WANT TO MAINTAIN IT DROP ME A LINE AT fran.mendez[at]hey.com.</h1>
+<h2>Note</h2>
+
+This package is a fork of the original [swagger-node-codegen](https://www.npmjs.com/package/swagger-node-codegen). Since the original package is no longer under development, we are maintaining this version with additional features, including the `-e` option for excluding specific operations from code generation.
 
 <p align="center"><img src="logo.png"></p>
 <p align="center">
@@ -20,13 +22,13 @@ The generated code features:
 To use it from the CLI:
 
 ```bash
-npm install -g swagger-node-codegen
+npm install -g @laststance/swagger-node-codegen
 ```
 
 To use it as a module in your project:
 
 ```bash
-npm install --save swagger-node-codegen
+npm install --save @laststance/swagger-node-codegen
 ```
 
 ## Requirements
@@ -72,7 +74,7 @@ snc swagger.yaml -e getPetById,updatePet
 
 ```js
 const path = require('path');
-const codegen = require('swagger-node-codegen');
+const codegen = require('@laststance/swagger-node-codegen');
 const swagger = require('./swagger.json');
 
 codegen.generate({
@@ -89,7 +91,7 @@ The `swagger` parameter can be either JSON or a path pointing to a JSON or YAML 
 
 ```js
 const path = require('path');
-const codegen = require('swagger-node-codegen');
+const codegen = require('@laststance/swagger-node-codegen');
 
 codegen.generate({
   swagger: path.resolve(__dirname, './swagger.yml'),
@@ -106,7 +108,7 @@ The function `codegen.generate` returns a Promise, so it means you can use async
 
 ```js
 const path = require('path');
-const codegen = require('swagger-node-codegen');
+const codegen = require('@laststance/swagger-node-codegen');
 
 try {
   await codegen.generate({
